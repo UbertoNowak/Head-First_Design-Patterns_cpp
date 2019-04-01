@@ -27,13 +27,7 @@ public:
     void execute() const;
 };
 
-// Smart Home
-class Light
-{
-public:
-    void turn_on();
-    void turn_off();
-};
+
 
 class MiniRemoteControl
 {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "command.h"
+#include "smarthome.h"
 
 Command::~Command()
 {}
@@ -15,16 +16,6 @@ void TurnOnLight::execute() const
 void NullObject::execute() const
 {
     std::cout<< "Empty command" << std::endl;
-}
-
-void Light::turn_on()
-{
-    std::cout<< "Light turned on" <<std::endl;
-}
-
-void Light::turn_off()
-{
-    std::cout<< "Light turned off" <<std::endl;
 }
 
 MiniRemoteControl::MiniRemoteControl()
