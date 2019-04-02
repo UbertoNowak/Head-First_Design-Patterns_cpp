@@ -21,14 +21,14 @@ void GarageDoor::close()
     std::cout<< "Close garage door" <<std::endl;
 }
 
-void Ventilator::turn_on()
+void Jacuzzi::turn_on()
 {
-    std::cout<< "Ventilator turned on" <<std::endl;
+    std::cout<< "Jacuzzi turned on" <<std::endl;
 }
 
-void Ventilator::turn_off()
+void Jacuzzi::turn_off()
 {
-    std::cout<< "Ventilator turned off" <<std::endl;
+    std::cout<< "Jacuzzi turned off" <<std::endl;
 }
 
 void StereoSystem::turn_on()

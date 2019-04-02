@@ -15,7 +15,7 @@ public:
     void close();
 };
 
-class Ventilator
+class Jacuzzi
 {
 public:
     void turn_on();
