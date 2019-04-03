@@ -114,9 +114,9 @@ Party::Party(const std::vector<Command*> &arList) : m_rList(arList)
 
 void Party::execute() const
 {
-    for(auto it = m_rList.begin(); it != m_rList.end(); ++it)
+    for(auto&& i : m_rList)
     {
-        (*it)->execute();
+        i->execute();
     }
 }
 
