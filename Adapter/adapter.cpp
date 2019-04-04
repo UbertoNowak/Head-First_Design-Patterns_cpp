@@ -52,16 +52,32 @@ int ObjectAdapter::frequency()
 }
 
 ClassAdapter::ClassAdapter()
-{
+{}
 
+int ClassAdapter::voltage()
+{
+    return AmericanSocket::voltage_120();
+}
+
+int ClassAdapter::frequency()
+{
+    return static_cast<int>(AmericanSocket::freq_60Hz());
 }
 
 int main()
 {
     BatteryCharger charger;
+    EuropeanSocket compatible_socket;
+    charger.plugIn(&compatible_socket);
+    charger.charge();
+
     AmericanSocket incompatible_socket;
     ObjectAdapter adapter(&incompatible_socket);
     charger.plugIn(&adapter);
+    charger.charge();
+
+    ClassAdapter diff_adapter;
+    charger.plugIn(&diff_adapter);
     charger.charge();
 
     return 0;

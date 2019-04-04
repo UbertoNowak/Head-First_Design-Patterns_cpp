@@ -39,10 +39,12 @@ private:
     AmericanSocket* m_pSocket;
 };
 
-class ClassAdapter
+class ClassAdapter : public EuropeanSocket , public AmericanSocket
 {
 public:
     ClassAdapter();
+    int voltage() override;
+    int frequency() override;
 };
 
 #endif // ADAPTER_H
