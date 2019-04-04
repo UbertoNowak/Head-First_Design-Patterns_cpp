@@ -4,9 +4,9 @@
 class EuropeanSocket
 {
 public:
+    virtual ~EuropeanSocket(){}
     virtual int voltage();
     virtual int frequency();
-    virtual ~EuropeanSocket();
 };
 
 class AmericanSocket
@@ -14,7 +14,7 @@ class AmericanSocket
 public:
     int voltage_110();
     int voltage_120();
-    float freq_60Hz();
+    double freq_60Hz();
 };
 
 class BatteryCharger
