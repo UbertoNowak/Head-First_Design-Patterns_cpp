@@ -21,14 +21,14 @@ void DrinkWithCaffeine::pourIntoACup()
     std::cout << "  Pour into a cup." << std::endl;
 }
 
-void DrinkWithCaffeine::additives()
-{
-    std::cout << "  No additives." << std::endl;
-}
-
 void Coffee::brewing()
 {
     std::cout << "  Brewing coffee." << std::endl;
+}
+
+void Coffee::additives()
+{
+    std::cout<< "  Add suger and milk." << std::endl;
 }
 
 void Tea::brewing()
@@ -36,6 +36,10 @@ void Tea::brewing()
     std::cout<< "  Brewing tea." << std::endl;
 }
 
+void Tea::additives()
+{
+    std::cout<< "  Add lemon." << std::endl;
+}
 
 int main()
 {
