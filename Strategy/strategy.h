@@ -48,12 +48,43 @@ public:
 class Duck
 {
 public:
+    virtual ~Duck();
     void fly();
     void sound();
-    void display();
+    virtual void display() = 0;
+    void setSound(Sound* apSound);
+    void setFlying(Flying* apFlying);
 private:
     Sound* m_pSound;
     Flying* m_pFlying;
+};
+
+class WildDuck : public Duck
+{
+public:
+    WildDuck();
+    void display() override;
+};
+
+class RubberDuck : public Duck
+{
+public:
+    RubberDuck();
+    void display() override;
+};
+
+class DecoyDuck : public Duck
+{
+public:
+    DecoyDuck();
+    void display() override;
+};
+
+class WoodenDuck : public Duck
+{
+public:
+    WoodenDuck();
+    void display() override;
 };
 
 #endif // STRATEGY_H
