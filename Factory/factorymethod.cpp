@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "factorymethod.h"
 
 Pizzeria::~Pizzeria(){}
@@ -99,16 +100,12 @@ void AmericanSeefoodPizza::preparation()
 
 int main()
 {
-    ItalianPizzeria* pItalianPizzeria = new ItalianPizzeria();
-    AmericanPizzeria* pAmericanPizzeria = new AmericanPizzeria();
+    std::unique_ptr<ItalianPizzeria> pItalianPizzeria(new ItalianPizzeria());
+    std::unique_ptr<AmericanPizzeria> pAmericanPizzeria(new AmericanPizzeria());
 
-    Pizza* pItalianPizza = pItalianPizzeria->orderPizza(PizzaType::Cheese);
-    Pizza* pAmericanPizza = pAmericanPizzeria->orderPizza(PizzaType::Peperoni);
+    std::unique_ptr<Pizza> pItalianPizza(pItalianPizzeria->orderPizza(PizzaType::Cheese));
+    std::unique_ptr<Pizza> pAmericanPizza(pAmericanPizzeria->orderPizza(PizzaType::Peperoni));
 
-    delete pItalianPizza;
-    delete pAmericanPizza;
-    delete pItalianPizzeria;
-    delete pAmericanPizzeria;
     return 0;
 }
 
