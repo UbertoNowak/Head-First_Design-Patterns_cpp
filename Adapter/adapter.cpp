@@ -36,10 +36,8 @@ void BatteryCharger::charge()
     std::cout<< "Voltage " << m_pSocket->voltage() << ", frequency " << m_pSocket->frequency() << std::endl;
 }
 
-ObjectAdapter::ObjectAdapter(AmericanSocket* apSocket)
-{
-    m_pSocket = apSocket;
-}
+ObjectAdapter::ObjectAdapter(AmericanSocket* apSocket) : m_pSocket(apSocket)
+{}
 
 int ObjectAdapter::voltage()
 {
