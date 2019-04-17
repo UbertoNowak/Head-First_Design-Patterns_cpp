@@ -1,12 +1,11 @@
 #include <iostream>
-#include <memory>
 #include "factorymethod.h"
 
 Pizzeria::~Pizzeria(){}
 
-Pizza* Pizzeria::orderPizza(PizzaType aType)
+std::unique_ptr<Pizza> Pizzeria::orderPizza(PizzaType aType)
 {
-  Pizza* pPizza = factoryMethod(aType);
+  auto pPizza = factoryMethod(aType);
   pPizza->preparation();
   pPizza->baking();
   pPizza->slicing();
@@ -14,40 +13,40 @@ Pizza* Pizzeria::orderPizza(PizzaType aType)
   return pPizza;
 }
 
-Pizza *ItalianPizzeria::factoryMethod(PizzaType aType)
+std::unique_ptr<Pizza> ItalianPizzeria::factoryMethod(PizzaType aType)
 {
-    Pizza* pizza = nullptr;
+    std::unique_ptr<Pizza> pPizza = nullptr;
     switch(aType)
     {
     case PizzaType::Cheese:
-        pizza = new ItalianCheesePizza();
+        pPizza = std::make_unique<ItalianCheesePizza>();
         break;
     case PizzaType::Peperoni:
-        pizza = new ItalianPepperoniPizza();
+        pPizza = std::make_unique<ItalianPepperoniPizza>();
         break;
     case PizzaType::Seefood:
-        pizza = new ItalianSeefoodPizza();
+        pPizza = std::make_unique<ItalianSeefoodPizza>();
         break;
     }
-    return pizza;
+    return pPizza;
 }
 
-Pizza *AmericanPizzeria::factoryMethod(PizzaType aType)
+std::unique_ptr<Pizza> AmericanPizzeria::factoryMethod(PizzaType aType)
 {
-    Pizza* pizza = nullptr;
+    std::unique_ptr<Pizza> pPizza = nullptr;
     switch(aType)
     {
     case PizzaType::Cheese:
-        pizza = new AmericanCheesePizza();
+        pPizza = std::make_unique<AmericanCheesePizza>();
         break;
     case PizzaType::Peperoni:
-        pizza = new AmericanPepperoniPizza();
+        pPizza = std::make_unique<AmericanPepperoniPizza>();
         break;
     case PizzaType::Seefood:
-        pizza = new AmericanSeefoodPizza();
+        pPizza = std::make_unique<AmericanSeefoodPizza>();
         break;
     }
-    return pizza;
+    return pPizza;
 }
 
 Pizza::~Pizza()
@@ -100,11 +99,11 @@ void AmericanSeefoodPizza::preparation()
 
 int main()
 {
-    std::unique_ptr<ItalianPizzeria> pItalianPizzeria(new ItalianPizzeria());
-    std::unique_ptr<AmericanPizzeria> pAmericanPizzeria(new AmericanPizzeria());
+    auto pItalianPizzeria = std::make_unique<ItalianPizzeria>();
+    auto pAmericanPizzeria = std::make_unique<AmericanPizzeria>();
 
-    std::unique_ptr<Pizza> pItalianPizza(pItalianPizzeria->orderPizza(PizzaType::Cheese));
-    std::unique_ptr<Pizza> pAmericanPizza(pAmericanPizzeria->orderPizza(PizzaType::Peperoni));
+    auto pItalianPizza = pItalianPizzeria->orderPizza(PizzaType::Cheese);
+    auto pAmericanPizza = pAmericanPizzeria->orderPizza(PizzaType::Peperoni);
 
     return 0;
 }
