@@ -3,6 +3,8 @@
 
 #include <memory>
 
+class AbstractFactory;
+
 enum class PizzaType
 {
     Cheese,
@@ -23,37 +25,55 @@ public:
 class ItalianCheesePizza : public Pizza
 {
 public:
+    ItalianCheesePizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class ItalianPepperoniPizza : public Pizza
 {
 public:
+    ItalianPepperoniPizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class ItalianSeefoodPizza : public Pizza
 {
 public:
+    ItalianSeefoodPizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class AmericanCheesePizza : public Pizza
 {
 public:
+    AmericanCheesePizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class AmericanPepperoniPizza : public Pizza
 {
 public:
+    AmericanPepperoniPizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class AmericanSeefoodPizza : public Pizza
 {
 public:
+    AmericanSeefoodPizza(AbstractFactory* pFactory);
     void preparation();
+private:
+    AbstractFactory* m_pFactory;
 };
 
 class Pizzeria
